@@ -12,22 +12,22 @@ function printOutput(num){
 		document.getElementById("output-value").innerText=num;
 	}
 	else{
-		document.getElementById("output-value").innerText=getFormattedNumber(num);
+		document.getElementById("output-value").innerText=num;
 	}	
 }
 printOutput("0");
 printHistory("0");
-function getFormattedNumber(num){
-	if(num=="-"){
-		return "";
-	}
-	var n = Number(num);
-	var value = n.toLocaleString("en");
-	return value;
-}
-function reverseNumberFormat(num){
-	return Number(num.replace(/,/g,''));
-}
+    // function getFormattedNumber(num){
+    //     if(num=="-"){
+    //         return "";
+    //     }
+    //     var n = Number(num);
+    //     var value = n.toLocaleString("en");
+    //     return value;
+    // }
+    // function reverseNumberFormat(num){
+    //     return Number(num.replace(/,/g,''));
+    // }
 var operator = document.getElementsByClassName("key--operator");
 for(var i =0;i<operator.length;i++){
 	operator[i].addEventListener('click',function(){
@@ -36,8 +36,8 @@ for(var i =0;i<operator.length;i++){
 			printOutput("0");
 		}
 		else if(this.id=="backspace"){
-			var output=reverseNumberFormat(getOutput()).toString();
-			if(output){//if output has a value
+			var output=getOutput().toString();
+			if(output){
 				output= output.substr(0,output.length-1);
 				printOutput(output);
 			}
@@ -51,17 +51,17 @@ for(var i =0;i<operator.length;i++){
 				}
 			}
 			if(output!="" || history!=""){
-				output= output==""?output:reverseNumberFormat(output);
+				output= output==""?output:(output);
 				history=history+output;
 				if(this.id=="="){
 					var result=eval(history);
 					printOutput(result);
-					printHistory("");
+					printHistory("0");
 				}
 				else{
 					history=history+this.id;
 					printHistory(history);
-					printOutput("");
+					printOutput("0");
 				}
 			}
 		}
@@ -71,8 +71,8 @@ for(var i =0;i<operator.length;i++){
 var number = document.getElementsByClassName("key--number");
 for(var i =0;i<number.length;i++){
 	number[i].addEventListener('click',function(){
-		var output=reverseNumberFormat(getOutput());
-		if(output!=NaN){ //if output is a number
+		var output=getOutput();
+		if(output!=NaN){ 
 			output=output+this.id;
 			printOutput(output);
 		}
