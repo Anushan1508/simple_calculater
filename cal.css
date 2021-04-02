@@ -94,7 +94,7 @@ body {
 }
 
 .calculator__keys > * {
-  background-color: #fff;
+  background-color: rgb(202, 213, 230);
   padding: 0.5em 1.25em;
   position: relative;
   text-align: center;
@@ -115,11 +115,11 @@ body {
 }
 
 .key--operator {
-  background-color: #eee;
+  background-color: rgb(161, 189, 221);
 }
 
 .key--equal {
-  background-image: linear-gradient(to bottom, #6abbfe, #597cf0);
+  background-image: linear-gradient(to bottom, #5b4fce, #db6e98);
   grid-column: -2;
   grid-row: 3 / span 2;
 }
